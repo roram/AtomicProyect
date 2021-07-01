@@ -3,9 +3,9 @@ import { View, Button, Text } from 'react-native';
 import InputComponent from '../../components/InputComponent';
 
 export default LoginScreen = ({
-    buttonLabel,
-    emailControl, emailTextInput, modifyEmailText, emailLabel, emailPlaceholder, emailSecureText,
-    passwordControl, passwordTextInput, modifyPasswordText, passwordLabel, passwordPlaceholder, passwordSecureText
+    buttonLabel, loginControl,
+    emailControl, emailTextInput, modifyEmailText, emailState, emailLabel, emailPlaceholder, emailSecureText,
+    passwordControl, passwordTextInput, modifyPasswordText, passwordState, passwordLabel, passwordPlaceholder, passwordSecureText
     }) =>{
 
     return(
@@ -14,6 +14,7 @@ export default LoginScreen = ({
             dataControl={emailControl}
             textInput={emailTextInput}
             textUpdate={modifyEmailText}
+            dataState={emailState}
             label={emailLabel}
             placeholder={emailPlaceholder}
             secureText={emailSecureText}
@@ -22,12 +23,14 @@ export default LoginScreen = ({
             dataControl={passwordControl}
             textInput={passwordTextInput}
             textUpdate={modifyPasswordText}
+            dataState={passwordState}
             label={passwordLabel}
             placeholder={passwordPlaceholder}
             secureText={passwordSecureText}
             />
             <Button
             title={buttonLabel}
+            onPress={loginControl}
             />
         </View>
     );
