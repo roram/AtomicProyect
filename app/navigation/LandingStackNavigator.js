@@ -1,19 +1,21 @@
 import React from 'react';
 import NavigatorConstant from './NavigatorConstant';
 import {createStackNavigator} from '@react-navigation/stack';
-import LoginScreen from '../ui/screens/loginScreen/LoginScreen';
+import LandingScreen from '../ui/screens/landingScreen/LandingScreen';
 
 const Stack = createStackNavigator();
 
-export default LandingStackNavigator = () => {
+const LandingStackNavigator = () =>{
     return(
         <Stack.Navigator
-        initialRouteName={NavigatorConstant.LOGIN_STACK.LOGIN_SCREEN}
+        initialRouteName={NavigatorConstant.LANDING_STACK.LANDING_SCREEN}
         >
             <Stack.Screen
-            name={NavigatorConstant.LOGIN_STACK.LOGIN_SCREEN}
-            component={LoginScreen}
+            name={NavigatorConstant.LANDING_STACK.LANDING_SCREEN}
+            component={LandingScreen}
             />
         </Stack.Navigator>
     );
 }
+
+export default LandingStackNavigator;

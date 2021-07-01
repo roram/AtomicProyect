@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import NavigatorConstant from '../../../navigation/NavigatorConstant';
 import LoginScreenUI from './LoginScreenUI';
 import InputControls from '../../../helpers/InputControls';
 import {connect} from 'react-redux';
@@ -71,6 +72,19 @@ class LoginScreen extends Component{
         }
     }
 
+    //Navigation logic
+
+    userAuthorized = () =>{
+        this.props.navigation.replace(NavigatorConstant.NAVIGATOR.LANDING_FLOW);
+    }
+
+    //UPDATE COMPONENT CONTROL STATE
+    componentDidUpdate(){
+        if(this.props.sessionStarted){
+            this.userAuthorized();
+        }
+    }
+
     render(){
         return(
             <LoginScreenUI
@@ -98,8 +112,10 @@ class LoginScreen extends Component{
 }
 
 const mapStateToProps = (state) => ({
+    //TODO: MODIFY THE NAME INPUT IN THE STORE, IS NOT AN EASY TO READ VARIABLE NAME.
     email: state.input.email,
-    password: state.input.password
+    password: state.input.password,
+    sessionStarted: state.input.sessionStarted
 });
 
 const mapDispatchToProps = {

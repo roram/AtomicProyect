@@ -2,6 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios';
 //import LoginWS from "../../helpers/LoginWS";
 
+//TODO: I need to move this function to an exterior component.
+
 export const LoginWS = createAsyncThunk(
     'users/LoginWS',
     async (userData) =>{
@@ -33,6 +35,11 @@ const LoginSlice = createSlice({
         },
         controlPassword: (state, action)=> {
             state.password = action.payload;
+        },
+        controlLogout: (state, action)=> {
+            state.sessionStarted = false;
+            state.password = '';
+            state.email = '';
         }
     },
     extraReducers:{
@@ -43,7 +50,7 @@ const LoginSlice = createSlice({
         },
         [LoginWS.fulfilled]:(state, action) =>{
             console.log("PEDIDO COMPLETO");
-            state.sessionStarted = action.payload;
+            state.sessionStarted = true;
         },
         [LoginWS.rejected]: (state) =>{
             console.log("PEDIDO RECHAZADO");
@@ -52,5 +59,5 @@ const LoginSlice = createSlice({
     }
 })
 
-export const {controlEmail, controlPassword} = LoginSlice.actions;
+export const {controlEmail, controlPassword, controlLogout} = LoginSlice.actions;
 export default LoginSlice.reducer;
