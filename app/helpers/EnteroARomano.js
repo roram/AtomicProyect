@@ -14,8 +14,6 @@ Reglas para escribir numeros romanos.
 - Solo podes escribir un máximo de 3 numeros romanos repetidos, en caso contrario, se tiene que restar al numero
 más grande o sumar al número más grande para llegar a ese resultado
 - El número más grande es el 3999 MMMCMXCIX ya que no se puede repetir el MMM reiteradas veces.
-
-
 */
 
 export function EnteroARomano(toRomanNum){

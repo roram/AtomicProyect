@@ -37,7 +37,8 @@ server.use('/users',(req, res)=>{
             
             if(usernameFind[0].password === passwordBody){
                 res.status(200).jsonp({
-                    msj:'VALID USER'
+                    msj:'VALID USER',
+                    user:usernameFind[0]
                 })
             }else{
                 res.status(400).jsonp({

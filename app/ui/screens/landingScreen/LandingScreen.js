@@ -14,11 +14,10 @@ class LandingScreen extends Component{
     }
 
     //Log Out Logic
-    logout(){
+    logout = () => {
         console.log("ME EJECUTO");
-        console.log(this)
-        //this.props.controlLogout();
-        //this.props.navigation.replace(NavigatorConstant.NAVIGATOR.LOGIN_FLOW);
+        this.props.controlLogout();
+        this.props.navigation.replace(NavigatorConstant.NAVIGATOR.LOGIN_FLOW);
     }
 
     render(){

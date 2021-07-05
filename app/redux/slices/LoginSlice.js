@@ -9,12 +9,14 @@ export const LoginWS = createAsyncThunk(
     async (userData) =>{
         console.log(userData);
         try{
+            console.log("ENTROOO?????")
             const response = await axios.post("http://10.0.2.2:4000/api/users", {"email":userData.email, "password": userData.password});
             console.log(response.data);
             return response.data;
         }catch(error){
+            
             if(error.response.status === 400){
-                console.log("ERROR DE CONEXION!!")
+                alert('User or password incorrect.')
                 return false;
             }
         }
@@ -50,10 +52,17 @@ const LoginSlice = createSlice({
         },
         [LoginWS.fulfilled]:(state, action) =>{
             console.log("PEDIDO COMPLETO");
-            state.sessionStarted = true;
+            console.log(action.payload.user);
+            if(action.payload.user){
+                state.sessionStarted = true;
+            }else{
+                state.sessionStarted = false;
+            }
         },
-        [LoginWS.rejected]: (state) =>{
+        //TODO: CUANDO RECHAZA EL PEDIDO?
+        [LoginWS.rejected]: (state, error) =>{
             console.log("PEDIDO RECHAZADO");
+            console.log(error);
             state.sessionStarted = false;
         }
     }
